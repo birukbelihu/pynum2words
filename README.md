@@ -66,11 +66,11 @@ print(english.words_to_number("two hundred fifty seven thousand five hundred thi
 
 ```bash
 # Convert number to words
-pyn2w 12345
+pyn2w --number 12345
 # Output: Twelve Thousand Three Hundred Forty Five
 
 # Convert words to number with custom dictionary
-pyn2w አምስት --dictionary dictionaries/amharic.n2w
+pyn2w --word "አምስት" --dict dictionaries/amharic.n2w
 # Output: 5
 ```
 
