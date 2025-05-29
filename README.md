@@ -11,7 +11,8 @@
 
 ## ✨ Features
 
-- 🔧 Highly Customizable  
+- 🔧 Highly Customizable
+- 🚀 Support Comment On The Dictionaries(.n2w).
 - 🔢 Convert numbers to words without upper limit  
 - 🌍 Supports custom multilingual dictionaries (`.n2w`)  
 - 🔁 Two-way conversion: number ➜ word and word ➜ number  
@@ -34,6 +35,8 @@ pip install pynum2words
 - **English**: `pynum2words.builtin_dictionaries.english_dictionary()`
 - **Portuguese**: `pynum2words.builtin_dictionaries.portuguese_dictionary()`
 - **Russian**: `pynum2words.builtin_dictionaries.russian_dictionary()`
+
+**N.B:-* You Can Download Specfic Language Packs From Here.
 
 More dictionaries can be added by creating a `.n2w` file with the required format.
 
