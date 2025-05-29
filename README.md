@@ -3,7 +3,6 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/BirukBelihu/pynum2words)
 ![GitHub forks](https://img.shields.io/github/forks/BirukBelihu/pynum2words)
 ![GitHub issues](https://img.shields.io/github/issues/BirukBelihu/pynum2words)
-![GitHub license](https://img.shields.io/github/license/BirukBelihu/pynum2words)
 
 **pynum2words** is a Python package for converting numbers to their word representation and vice versa, using a built-in or custom dictionary.
 
