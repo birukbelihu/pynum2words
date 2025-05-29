@@ -36,7 +36,7 @@ pip install pynum2words
 - **Portuguese**: `pynum2words.builtin_dictionaries.portuguese_dictionary()`
 - **Russian**: `pynum2words.builtin_dictionaries.russian_dictionary()`
 
-**N.B:-** You Can Download Specfic Language Packs From Here.
+**N.B:-** You Can Download Specfic Language Packs From [Here](https://github.com/birukbelihu/pynum2words-language-packs).
 
 More dictionaries can be added by creating a `.n2w` file with the required format.
 
