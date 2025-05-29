@@ -45,17 +45,21 @@ More dictionaries can be added by creating a `.n2w` file with the required forma
 ### Python
 
 ```python
-from pynum2words import PyNum2Words
-from pynum2words.builtin_dictionaries import amharic_dictionary
+from pynum2words.builtin_dictionaries import amharic_dictionary, english_dictionary
+from pynum2words.pynum2words import PyNum2Words
 
-# Use built-in English dictionary
-converter = PyNum2Words(amharic_dictionary())
-print(converter.number_to_words(25))         # Twenty Five
-print(converter.words_to_number("Twenty"))   # 20
+# Initialize converters for each language
+amharic = PyNum2Words(amharic_dictionary())
+english = PyNum2Words(english_dictionary())
 
-# Use a custom Amharic dictionary
-converter = PyNum2Words()
-print(converter.number_to_words(5)) # አምስት
+# Number to words
+print(amharic.number_to_words(257533))  # Output: ሁለት መቶ አምስት አስር ሰባት ሺ አምስት መቶ ሦስት አስር ሦስት
+print(english.number_to_words(257533))  # Output: two hundred fifty-seven thousand five hundred thirty-three
+
+# Words to number
+print(amharic.words_to_number("ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ ሰላሳ ሶስት"))  # Output: 257533
+print(english.words_to_number("two hundred fifty seven thousand five hundred thirty three"))  # Output: 257533
+
 ```
 
 ### CLI
