@@ -11,17 +11,17 @@
 # limitations under the License.
 # Licensed under the Apache License, Version 2.0 (the "License");
 
-from pynum2words.pynum2words import PyNum2Words
 from pynum2words.builtin_dictionaries import amharic_dictionary, english_dictionary
+from pynum2words.pynum2words import PyNum2Words
 
 # Initialize converters for each language
 amharic = PyNum2Words(amharic_dictionary())
 english = PyNum2Words(english_dictionary())
 
 # Number to words
-print(amharic.number_to_words(257533))   # Output: ሁለት መቶ አምስት አስር ሰባት ሺ አምስት መቶ ሦስት አስር ሦስት
-print(english.number_to_words(257533))   # Output: two hundred fifty-seven thousand five hundred thirty-three
+print(amharic.number_to_words(257533))  # Output: ሁለት መቶ አምስት አስር ሰባት ሺ አምስት መቶ ሦስት አስር ሦስት
+print(english.number_to_words(257533))  # Output: two hundred fifty-seven thousand five hundred thirty-three
 
 # Words to number
-print(amharic.words_to_number("ሁለት መቶ አምስት አስር ሰባት ሺ አምስት መቶ ሦስት አስር ሦስት"))  # Output: 257533
-print(english.words_to_number("two hundred fifty-seven thousand five hundred thirty-three"))  # Output: 257533
+print(amharic.words_to_number("ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ ሰላሳ ሶስት"))  # Output: 257533
+print(english.words_to_number("two hundred fifty seven thousand five hundred thirty three"))  # Output: 257533

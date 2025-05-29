@@ -11,15 +11,17 @@
 # limitations under the License.
 # Licensed under the Apache License, Version 2.0 (the "License");
 
+from importlib.resources import files
 from typing import Tuple, Dict
 
 
-def load_num2words_dictionary(dictionary_file_path: str, suppress_error: bool = False) -> Tuple[
+def load_num2words_dictionary(dictionary_name: str, suppress_error: bool = False) -> Tuple[
     Dict[int, str], Dict[str, int]]:
+    dictionary_file_path = files("pynum2words.dictionaries").joinpath(dictionary_name)
     number_to_word = {}
     comments = ['#', '//', '/*', '*/', ';']
 
-    with open(dictionary_file_path, encoding='utf-8') as file:
+    with dictionary_file_path.open("r", encoding='utf-8') as file:
         for i, line in enumerate(file, start=1):
             line = line.strip()
             if not line or any(line.startswith(prefix) for prefix in comments):
@@ -38,7 +40,8 @@ def load_num2words_dictionary(dictionary_file_path: str, suppress_error: bool = 
             value = value.strip()
 
             if not key.isdigit() or not value:
-                error_message = f"[Line {i}] Invalid entry: '{line}' — left side must be a number and right side non-empty"
+                error_message = (f"[Line {i}] Invalid entry: '{line}' — left side must be "
+                                 f"a number and right side non-empty")
                 if suppress_error:
                     print(f"Warning: {error_message}")
                     continue

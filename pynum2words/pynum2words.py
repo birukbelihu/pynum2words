@@ -12,14 +12,14 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 
 import math
+import importlib.resources
 from typing import Dict, Tuple
 
 
-def load_num2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[str, int]]:
+def load_num2words_dictionary(file_name: str) -> Tuple[Dict[int, str], Dict[str, int]]:
     number_to_word = {}
     comments = ['#', '//', '/*', '*/', ';']
-
-    with open(file_path, encoding='utf-8') as f:
+    with importlib.resources.open_text("pynum2words.dictionaries", file_name.split("/")[-1], encoding="utf-8") as f:
         for i, line in enumerate(f, start=1):
             line = line.strip()
             if not line or any(line.startswith(prefix) for prefix in comments):
