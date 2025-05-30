@@ -11,11 +11,11 @@
 ## ✨ Features
 
 - 🔧 Highly Customizable
-- 🚀 Support Comment On The Dictionaries(.n2w).
-- 🔢 Convert numbers to words without upper limit  
-- 🌍 Supports custom multilingual dictionaries (`.n2w`)  
+- 🔢 Convert numbers to words without upper limit
+- 🌍 Supports custom multilingual dictionaries (`.n2w`)
+- 🚀 Support Comment On The Dictionaries(.n2w). 
 - 🔁 Two-way conversion: number ➜ word and word ➜ number  
-- 📦 CLI & Python API support
+- 📦 Command Line & Python API support
 
 ---
 
