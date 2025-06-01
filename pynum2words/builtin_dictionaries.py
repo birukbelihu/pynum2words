@@ -10,6 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # Licensed under the Apache License, Version 2.0 (the "License");
+
 def amharic_dictionary():
     return "pynum2words/dictionaries/amharic.n2w"
 
