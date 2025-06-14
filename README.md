@@ -77,8 +77,7 @@ print(english.words_to_number("two hundred fifty seven thousand five hundred thi
 
 ## 📢 Social Media
 
-- 📺 [YouTube: @pythondevs](https://youtube.com/@pythondevs?si=_CZxaEBwDkQEj4je)  
-- 💬 [Telegram: @pythondevstutorials](https://t.me/pythondevstutorials)
+- 📺 [YouTube: @pythondevs](https://youtube.com/@pythondevs?si=_CZxaEBwDkQEj4je)
 
 ---
 
