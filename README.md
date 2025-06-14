@@ -41,6 +41,18 @@ More dictionaries can be added by creating a `.n2w` file with the required forma
 
 ## 🧠 Example Usage
 
+### CLI
+
+```bash
+# Convert number to words
+pyn2w --number 12345
+# Output: Twelve Thousand Three Hundred Forty Five
+
+# Convert words to number with custom dictionary
+pyn2w --word "አምስት" --dict dictionaries/amharic.n2w
+# Output: 5
+```
+
 ### Python
 
 ```python
@@ -59,18 +71,6 @@ print(english.number_to_words(257533))  # Output: Two Hundred Fifty Seven Thousa
 print(amharic.words_to_number("ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ ሰላሳ ሶስት"))  # Output: 257533
 print(english.words_to_number("two hundred fifty seven thousand five hundred thirty three"))  # Output: 257533
 
-```
-
-### CLI
-
-```bash
-# Convert number to words
-pyn2w --number 12345
-# Output: Twelve Thousand Three Hundred Forty Five
-
-# Convert words to number with custom dictionary
-pyn2w --word "አምስት" --dict dictionaries/amharic.n2w
-# Output: 5
 ```
 
 ---
