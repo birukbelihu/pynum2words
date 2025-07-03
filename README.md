@@ -3,6 +3,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/BirukBelihu/pynum2words)
 ![GitHub forks](https://img.shields.io/github/forks/BirukBelihu/pynum2words)
 ![GitHub issues](https://img.shields.io/github/issues/BirukBelihu/pynum2words)
+[![PyPI Downloads](https://static.pepy.tech/badge/pynum2words)](https://pepy.tech/projects/pynum2words)
 
 **pynum2words** is a Python package for converting numbers to their word representation and vice versa, using a built-in or custom dictionary.
 
@@ -21,8 +22,28 @@
 
 ## 📦 Installation
 
-```bash
+```
 pip install pynum2words
+```
+
+You can also install pynum2words from source code. source code may not be stable, but it will have the latest features and bug fixes.
+
+Clone The Repository:
+
+```
+git clone https://github.com/birukbelihu/pynum2words.git
+```
+
+Go Inside The Project Directory:
+
+```
+cd pynum2words
+```
+
+Install The Package:
+
+```
+pip install -e .
 ```
 
 ---
@@ -30,36 +51,30 @@ pip install pynum2words
 ## Builtin Dictionaries
 
 - **Amharic**: `pynum2words.builtin_dictionaries.amharic_dictionary()`
-- **Tigrinya**: `pynum2words.builtin_dictionaries.tigrinya_dictionary()`
+- **Arabic**: `pynum2words.builtin_dictionaries.arabic_dictionary()`
+- **Chinese**: `pynum2words.builtin_dictionaries.chinese_dictionary()`
+- **Dutch**: `pynum2words.builtin_dictionaries.dutch_dictionary()`
 - **English**: `pynum2words.builtin_dictionaries.english_dictionary()`
+- **French**: `pynum2words.builtin_dictionaries.french_dictionary()`
+- **German**: `pynum2words.builtin_dictionaries.german_dictionary()`
+- **Greek**: `pynum2words.builtin_dictionaries.greek_dictionary()`
+- **Hindi**: `pynum2words.builtin_dictionaries.hindi_dictionary()`
+- **Italian**: `pynum2words.builtin_dictionaries.italian_dictionary()`
+- **Japanese**: `pynum2words.builtin_dictionaries.japanese_dictionary()`
+- **Korean**: `pynum2words.builtin_dictionaries.korean_dictionary()`
 - **Portuguese**: `pynum2words.builtin_dictionaries.portuguese_dictionary()`
+- **Romanian**: `pynum2words.builtin_dictionaries.romanian_dictionary()`
 - **Russian**: `pynum2words.builtin_dictionaries.russian_dictionary()`
+- **Spanish**: `pynum2words.builtin_dictionaries.spanish_dictionary()`
+- **Swahili**: `pynum2words.builtin_dictionaries.swahili_dictionary()`
+- **Tigrinya**: `pynum2words.builtin_dictionaries.tigrinya_dictionary()`
+- **Turkish**: `pynum2words.builtin_dictionaries.turkish_dictionary()`
 
-**N.B:-** You Can Get More Language Packs From [Here](https://github.com/birukbelihu/pynum2words-language-packs).
+**N.B:-** You Can Get More Language Dictionaries From [Here](https://github.com/birukbelihu/pynum2words-language-packs).
 
 More dictionaries can be added by creating a `.n2w` file with the required format.
 
 ## 🧠 Example Usage
-
-### Python
-
-```python
-from pynum2words.builtin_dictionaries import amharic_dictionary, english_dictionary
-from pynum2words.pynum2words import PyNum2Words
-
-# Initialize converters for each language
-amharic = PyNum2Words(amharic_dictionary())
-english = PyNum2Words(english_dictionary())
-
-# Number to words
-print(amharic.number_to_words(257533))  # Output: ሁለት መቶ አምስት አስር ሰባት ሺ አምስት መቶ ሦስት አስር ሦስት
-print(english.number_to_words(257533))  # Output: two hundred fifty-seven thousand five hundred thirty-three
-
-# Words to number
-print(amharic.words_to_number("ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ ሰላሳ ሶስት"))  # Output: 257533
-print(english.words_to_number("two hundred fifty seven thousand five hundred thirty three"))  # Output: 257533
-
-```
 
 ### CLI
 
@@ -73,12 +88,31 @@ pyn2w --word "አምስት" --dict dictionaries/amharic.n2w
 # Output: 5
 ```
 
+### Python
+
+```python
+from pynum2words.builtin_dictionaries import amharic_dictionary, english_dictionary
+from pynum2words.pynum2words import PyNum2Words
+
+# Initialize converters for each language
+amharic = PyNum2Words(amharic_dictionary())
+english = PyNum2Words(english_dictionary())
+
+# Number to words
+print(amharic.number_to_words(257533))  # Output: ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ ሰላሳ ሶስት
+print(english.number_to_words(257533))  # Output: Two Hundred Fifty Seven Thousand Five Hundred Thirty Three
+
+# Words to number
+print(amharic.words_to_number("ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ ሰላሳ ሶስት"))  # Output: 257533
+print(english.words_to_number("two hundred fifty seven thousand five hundred thirty three"))  # Output: 257533
+
+```
+
 ---
 
 ## 📢 Social Media
 
-- 📺 [YouTube: @pythondevs](https://youtube.com/@pythondevs?si=_CZxaEBwDkQEj4je)  
-- 💬 [Telegram: @pythondevstutorials](https://t.me/pythondevstutorials)
+- 📺 [YouTube: @pythondevs](https://youtube.com/@pythondevs?si=_CZxaEBwDkQEj4je)
 
 ---
 

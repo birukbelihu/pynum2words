@@ -10,17 +10,62 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # Licensed under the Apache License, Version 2.0 (the "License");
-def amharic_dictionary():
-    return "pynum2words/dictionaries/amharic.n2w"
 
-def tigrinya_dictionary():
-    return "pynum2words/dictionaries/tigrinya.n2w"
+dictionaries_file_path = "pynum2words/dictionaries/"
+
+def get_dictionary_file_path(dictionary_name):
+    return f"{dictionaries_file_path}{dictionary_name}.n2w"
+
+def amharic_dictionary():
+    return get_dictionary_file_path("amharic")
+
+def arabic_dictionary():
+    return get_dictionary_file_path("arabic")
+
+def chinese_dictionary():
+    return get_dictionary_file_path("chinese")
 
 def english_dictionary():
-    return "pynum2words/dictionaries/english.n2w"
+    return get_dictionary_file_path("chinese")
+
+def french_dictionary():
+    return get_dictionary_file_path("french")
+
+def german_dictionary():
+    return get_dictionary_file_path("german")
+
+def greek_dictionary():
+    return get_dictionary_file_path("greek")
+
+def hindi_dictionary():
+    return get_dictionary_file_path("hindi")
+
+def italian_dictionary():
+    return get_dictionary_file_path("italian")
+
+def japanese_dictionary():
+    return get_dictionary_file_path("japanese")
+
+def korean_dictionary():
+    return get_dictionary_file_path("korean")
 
 def portuguese_dictionary():
-    return "pynum2words/dictionaries/portuguese.n2w"
+    return get_dictionary_file_path("portuguese")
+
+def romanian_dictionary():
+    return get_dictionary_file_path("romanian")
 
 def russian_dictionary():
-    return "pynum2words/dictionaries/russian.n2w"
+    return get_dictionary_file_path("russian")
+
+def spanish_dictionary():
+    return get_dictionary_file_path("spanish")
+
+def swahili_dictionary():
+    return get_dictionary_file_path("swahili")
+
+def tigrinya_dictionary():
+    return get_dictionary_file_path("tigrinya")
+
+def turkish_dictionary():
+    return get_dictionary_file_path("turkish")

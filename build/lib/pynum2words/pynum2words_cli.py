@@ -37,7 +37,7 @@ def main():
     parser.add_argument(
         "--dict",
         default=default_english_dictionary_file_path,
-        help="Path to your custom dictionary (.n2w) file [default: English]"
+        help="Path to your custom dictionary (.n2w) file [default: built-in English]"
     )
 
     parser.add_argument(
@@ -54,7 +54,7 @@ def main():
     parser.add_argument(
         "--version",
         action="store_true",
-        help="pynum2words CLI"
+        help="pynum2words CLI Version"
     )
 
     arguments = parser.parse_args()
@@ -76,7 +76,6 @@ def main():
             title="📘 Usage Help",
             border_style="red"
         ))
-        console.print(len(arguments.items))
 
 
 if __name__ == "__main__":
