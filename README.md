@@ -72,7 +72,7 @@ pip install -e .
 
 **N.B:-** You Can Get More Language Dictionaries From [Here](https://github.com/birukbelihu/pynum2words-language-packs).
 
-More dictionaries can be added by creating a `.n2w` file with the required format.
+If Your Language Is Not Listed Here You Can Create Your Own Dictionary By Following This [Guide](https://github.com/birukbelihu/pynum2words-language-packs?tab=readme-ov-file#how-to-create-a-language-dictionary)
 
 ## 🧠 Example Usage
 
