@@ -1,0 +1,2 @@
+[console_scripts]
+pyn2w = pynum2words.pynum2words_cli:main
