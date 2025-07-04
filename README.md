@@ -99,13 +99,9 @@ amharic = PyNum2Words(amharic_dictionary())
 english = PyNum2Words(english_dictionary())
 
 # Number to words
-print(amharic.number_to_words(257533))  # Output: ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ ሰላሳ ሶስት
-print(english.number_to_words(257533))  # Output: Two Hundred Fifty Seven Thousand Five Hundred Thirty Three
-
+print(amharic.number_to_words(248914))  # Output: ሁለት መቶ አምስት አስር ሰባት ሺ አምስት መቶ ሦስት አስር ሦስት
 # Words to number
-print(amharic.words_to_number("ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ ሰላሳ ሶስት"))  # Output: 257533
-print(english.words_to_number("two hundred fifty seven thousand five hundred thirty three"))  # Output: 257533
-
+print(amharic.words_to_number("ሁለት መቶ አርባ ስምንት ሺህ ዘጠኝ መቶ አስር አራት"))  # Output: 257533
 ```
 
 ---
