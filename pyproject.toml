@@ -1,28 +1,24 @@
 [project]
 name = "pynum2words"
-version = "1.1.7"
-description = "A Python package for converting numbers to their word representation and vice versa using a built-in or custom dictionary."
+version = "1.2.0"
+description = "A Python library for converting numbers to their word representation and vice versa using a built-in or custom dictionary."
 readme = { file = "README.md", content-type = "text/markdown" }
 
 requires-python = ">=3.9"
 license = {text = "Apache-2.0"}
 authors = [
-  {name = "Biruk", email = "birukbelihu1995@email.com"}
+  {name = "BirukBelihu", email = "birukbelihu1995@email.com"}
 ]
 dependencies = [
   "rich"
 ]
+
 classifiers = [
-  "License :: OSI Approved :: Apache Software License",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.7",
-  "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
-  "Operating System :: OS Independent",
-  "Intended Audience :: Developers",
-  "Topic :: Software Development :: Libraries",
-  "Topic :: Text Processing :: Linguistic"
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13"
 ]
 
 [project.scripts]
@@ -31,6 +27,11 @@ pyn2w = "pynum2words.pynum2words_cli:main"
 [tool.setuptools]
 packages=["pynum2words"]
 include-package-data = true
+
+[project.urls]
+Homepage = "https://github.com/birukbelihu/pynum2words"
+Source = "https://github.com/birukbelihu/pynum2words"
+Issues = "https://github.com/birukbelihu/pynum2words/issues"
 
 [tool.setuptools.package-data]
 "pynum2words.dictionaries" = ["*.n2w"]

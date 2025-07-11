@@ -8,12 +8,15 @@
 **pynum2words** is a Python library for converting numbers to their word representation and vice versa, using a built-in or custom dictionary.
 
 ---
+GitHub: [pynum2words](https://github.com/BirukBelihu/pynum2words)
+---
 
 ## ✨ Features
 
 - 🔧 Highly Customizable
 - 🔢 Convert number ➜ word and word ➜ number without an upper limit
 - 🌍 Supports custom language dictionaries (`.n2w`)
+- 🌐 25+ Built-in Language dictionaries out of the box
 - 🚀 Support Comment On The Dictionaries(.n2w).  
 - 📦 Command Line & Python API support
 
@@ -83,8 +86,8 @@ pyn2w --number 12345
 # Output: Twelve Thousand Three Hundred Forty Five
 
 # Convert words to number with custom dictionary
-pyn2w --word "አምስት" --dict dictionaries/amharic.n2w
-# Output: 5
+pyn2w --word "ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ ሰላሳ ሶስት" --dict dictionaries/amharic.n2w
+# Output: 257533
 ```
 
 ### Python
