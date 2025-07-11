@@ -26,7 +26,7 @@ def chinese_dictionary():
     return get_dictionary_file_path("chinese")
 
 def english_dictionary():
-    return get_dictionary_file_path("chinese")
+    return get_dictionary_file_path("english")
 
 def french_dictionary():
     return get_dictionary_file_path("french")
