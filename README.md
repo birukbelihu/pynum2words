@@ -5,17 +5,16 @@
 ![GitHub issues](https://img.shields.io/github/issues/BirukBelihu/pynum2words)
 [![PyPI Downloads](https://static.pepy.tech/badge/pynum2words)](https://pepy.tech/projects/pynum2words)
 
-**pynum2words** is a Python package for converting numbers to their word representation and vice versa, using a built-in or custom dictionary.
+**pynum2words** is a Python library for converting numbers to their word representation and vice versa, using a built-in or custom dictionary.
 
 ---
 
 ## ✨ Features
 
 - 🔧 Highly Customizable
-- 🔢 Convert numbers to words without upper limit
-- 🌍 Supports custom multilingual dictionaries (`.n2w`)
-- 🚀 Support Comment On The Dictionaries(.n2w). 
-- 🔁 Two-way conversion: number ➜ word and word ➜ number  
+- 🔢 Convert number ➜ word and word ➜ number without an upper limit
+- 🌍 Supports custom language dictionaries (`.n2w`)
+- 🚀 Support Comment On The Dictionaries(.n2w).  
 - 📦 Command Line & Python API support
 
 ---
@@ -70,7 +69,7 @@ pip install -e .
 - **Tigrinya**: `pynum2words.builtin_dictionaries.tigrinya_dictionary()`
 - **Turkish**: `pynum2words.builtin_dictionaries.turkish_dictionary()`
 
-**N.B:-** You Can Get More Language Dictionaries From [Here](https://github.com/birukbelihu/pynum2words-language-packs).
+**N.B:-** You Can Get More Language Dictionaries From [Here](https://github.com/birukbelihu/pynum2words-dictionaries)
 
 If Your Language Is Not Listed Here You Can Create Your Own Dictionary By Following This [Guide](https://github.com/birukbelihu/pynum2words-language-packs?tab=readme-ov-file#how-to-create-a-language-dictionary)
 
@@ -95,13 +94,19 @@ from pynum2words.builtin_dictionaries import amharic_dictionary, english_diction
 from pynum2words.pynum2words import PyNum2Words
 
 # Initialize converters for each language
-amharic = PyNum2Words(amharic_dictionary())
-english = PyNum2Words(english_dictionary())
 
-# Number to words
-print(amharic.number_to_words(248914))  # Output: ሁለት መቶ አምስት አስር ሰባት ሺ አምስት መቶ ሦስት አስር ሦስት
-# Words to number
-print(amharic.words_to_number("ሁለት መቶ አርባ ስምንት ሺህ ዘጠኝ መቶ አስር አራት"))  # Output: 257533
+amharic_converter = PyNum2Words(amharic_dictionary())
+english_converter = PyNum2Words(english_dictionary())
+
+# Number to words(Amharic)
+print(amharic_converter.number_to_words(248914))  # Output: ሁለት መቶ አርባ ስምንት ሺህ ዘጠኝ መቶ አስር አራት
+# Words to number(Amharic)
+print(amharic_converter.words_to_number("ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ ሰላሳ ሶስት"))  # Output: 257533
+
+# Number to words(English)
+print(english_converter.number_to_words(49285294))  # Output: Forty Nine Million Two Hundred Eighty Five Thousand Two Hundred Ninety Four
+# Words to number(English)
+print(english_converter.words_to_number("Two Hundred Forty One Thousand Eight Hundred Forty One"))  # Output: 241841
 ```
 
 ---
