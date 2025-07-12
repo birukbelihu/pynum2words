@@ -13,12 +13,12 @@ GitHub: [pynum2words](https://github.com/BirukBelihu/pynum2words)
 
 ## ✨ Features
 
-- 🔧 Highly Customizable
+- 🔧 Highly customizable
 - 🔢 Convert number ➜ word and word ➜ number without an upper limit
 - 🌍 Supports custom language dictionaries (`.n2w`)
 - 🌐 25+ Built-in Language dictionaries out of the box
-- 🚀 Support Comment On The Dictionaries(.n2w).  
-- 📦 Command Line & Python API support
+- 🚀 Support comments On the dictionaries(.n2w).  
+- 📦 Command line & python API support
 
 ---
 
@@ -30,19 +30,19 @@ pip install pynum2words
 
 You can also install pynum2words from source code. source code may not be stable, but it will have the latest features and bug fixes.
 
-Clone The Repository:
+Clone the repository:
 
 ```
 git clone https://github.com/birukbelihu/pynum2words.git
 ```
 
-Go Inside The Project Directory:
+Go inside the project directory:
 
 ```
 cd pynum2words
 ```
 
-Install The Package:
+Install pynum2words:
 
 ```
 pip install -e .
@@ -85,9 +85,9 @@ pip install -e .
 - **Urdu**: `pynum2words.builtin_dictionaries.urdu_dictionary()`
 - **Zulu**: `pynum2words.builtin_dictionaries.zulu_dictionary()`
 
-**N.B:-** You Can Get More Language Dictionaries From [Here](https://github.com/birukbelihu/pynum2words-dictionaries)
+**N.B:-** You can get more language dictionaries from [Here](https://github.com/birukbelihu/pynum2words-dictionaries)
 
-If Your Language Is Not Listed Here You Can Create Your Own Dictionary By Following This [Guide](https://github.com/birukbelihu/pynum2words-language-packs?tab=readme-ov-file#how-to-create-a-language-dictionary)
+If your language is not listed here you can create your own dictionary easily using this [guide](https://github.com/birukbelihu/pynum2words-language-packs?tab=readme-ov-file#how-to-create-a-language-dictionary)
 
 ## 🧠 Example Usage
 
