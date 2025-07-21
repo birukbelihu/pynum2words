@@ -70,14 +70,14 @@ def japanese_dictionary():
 def kannada_dictionary():
     return get_dictionary_file_path("kannada")
 
-def oromo_dictionary():
-    return get_dictionary_file_path("oromo")
-
 def korean_dictionary():
     return get_dictionary_file_path("korean")
 
 def malay_dictionary():
     return get_dictionary_file_path("malay")
+
+def oromo_dictionary():
+    return get_dictionary_file_path("oromo")
 
 def persian_dictionary():
     return get_dictionary_file_path("persian")
