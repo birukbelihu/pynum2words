@@ -1,33 +1,18 @@
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# Licensed under the Apache License, Version 2.0 (the "License");
-
 import math
 from typing import Dict, Tuple
 import importlib.resources
 import os
 
-def load_num2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[str, int]]:
+def load_pynum2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[str, int]]:
     number_to_word = {}
     comments = ['#', '//', '/*', '*/', ';']
 
     lines = []
 
     if os.path.isfile(file_path):
-        # It's a custom external path
         with open(file_path, encoding="utf-8") as f:
             lines = f.readlines()
     else:
-        # Try loading from built-in package resource
         try:
             file_name = os.path.basename(file_path)
             with importlib.resources.open_text("pynum2words.dictionaries", file_name, encoding="utf-8") as f:
@@ -41,7 +26,7 @@ def load_num2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[str,
             continue
 
         if '=' not in line:
-            raise ValueError(f"Line {i} Invalid Format: {line} — expected 'number = word'")
+            raise ValueError(f"Line {i} Invalid format: {line} — expected 'number = word'")
 
         key, value = line.split('=', 1)
         key = key.strip()
@@ -57,7 +42,7 @@ def load_num2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[str,
 
 class PyNum2Words:
     def __init__(self, dict_file_path: str):
-        self.num2word, self.word2num = load_num2words_dictionary(dict_file_path)
+        self.num2word, self.word2num = load_pynum2words_dictionary(dict_file_path)
         self.base_units = self.get_base_units()
 
     def get_base_units(self) -> Dict[int, str]:
