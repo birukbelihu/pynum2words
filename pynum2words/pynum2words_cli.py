@@ -16,7 +16,6 @@ import os
 
 from rich.console import Console
 from rich.panel import Panel
-
 from pynum2words import PyNum2Words
 
 console = Console()
@@ -76,7 +75,6 @@ def main():
             title="📘 Usage Help",
             border_style="red"
         ))
-        console.print(len(arguments.items))
 
 
 if __name__ == "__main__":

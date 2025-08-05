@@ -12,14 +12,17 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 
 import math
-import importlib.resources
 from typing import Dict, Tuple
+import os
 
-
-def load_num2words_dictionary(file_name: str) -> Tuple[Dict[int, str], Dict[str, int]]:
+def load_num2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[str, int]]:
     number_to_word = {}
     comments = ['#', '//', '/*', '*/', ';']
-    with importlib.resources.open_text("pynum2words.dictionaries", file_name.split("/")[-1], encoding="utf-8") as f:
+
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"Dictionary file not found at: {file_path}")
+
+    with open(file_path, encoding="utf-8") as f:
         for i, line in enumerate(f, start=1):
             line = line.strip()
             if not line or any(line.startswith(prefix) for prefix in comments):
@@ -33,13 +36,12 @@ def load_num2words_dictionary(file_name: str) -> Tuple[Dict[int, str], Dict[str,
             value = value.strip()
 
             if not key.isdigit() or not value:
-                raise ValueError(f"Invalid entry: {line} — left must be number, right non-empty")
+                raise ValueError(f"Invalid entry at line {i}: {line} — left must be number, right non-empty")
 
             number_to_word[int(key)] = value
 
     word_to_number = {v.lower(): k for k, v in number_to_word.items()}
     return dict(sorted(number_to_word.items())), word_to_number
-
 
 class PyNum2Words:
     def __init__(self, dict_file_path: str):
