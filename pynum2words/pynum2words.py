@@ -13,32 +13,44 @@
 
 import math
 from typing import Dict, Tuple
+import importlib.resources
 import os
 
 def load_num2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[str, int]]:
     number_to_word = {}
     comments = ['#', '//', '/*', '*/', ';']
 
-    if not os.path.exists(file_path):
-        raise FileNotFoundError(f"Dictionary file not found at: {file_path}")
+    lines = []
 
-    with open(file_path, encoding="utf-8") as f:
-        for i, line in enumerate(f, start=1):
-            line = line.strip()
-            if not line or any(line.startswith(prefix) for prefix in comments):
-                continue
+    if os.path.isfile(file_path):
+        # It's a custom external path
+        with open(file_path, encoding="utf-8") as f:
+            lines = f.readlines()
+    else:
+        # Try loading from built-in package resource
+        try:
+            file_name = os.path.basename(file_path)
+            with importlib.resources.open_text("pynum2words.dictionaries", file_name, encoding="utf-8") as f:
+                lines = f.readlines()
+        except (ModuleNotFoundError, FileNotFoundError):
+            raise FileNotFoundError(f"Dictionary file not found: {file_path}")
 
-            if '=' not in line:
-                raise ValueError(f"Line {i} Invalid Format: {line} — expected 'number = word'")
+    for i, line in enumerate(lines, start=1):
+        line = line.strip()
+        if not line or any(line.startswith(prefix) for prefix in comments):
+            continue
 
-            key, value = line.split('=', 1)
-            key = key.strip()
-            value = value.strip()
+        if '=' not in line:
+            raise ValueError(f"Line {i} Invalid Format: {line} — expected 'number = word'")
 
-            if not key.isdigit() or not value:
-                raise ValueError(f"Invalid entry at line {i}: {line} — left must be number, right non-empty")
+        key, value = line.split('=', 1)
+        key = key.strip()
+        value = value.strip()
 
-            number_to_word[int(key)] = value
+        if not key.isdigit() or not value:
+            raise ValueError(f"Invalid entry at line {i}: {line} — left must be number, right non-empty")
+
+        number_to_word[int(key)] = value
 
     word_to_number = {v.lower(): k for k, v in number_to_word.items()}
     return dict(sorted(number_to_word.items())), word_to_number
