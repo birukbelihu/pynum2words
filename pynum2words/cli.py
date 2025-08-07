@@ -1,12 +1,10 @@
 import argparse
 import os
 
-from rich.console import Console
-from rich.panel import Panel
+from colorama import init, Fore, Style
 from pynum2words import PyNum2Words
 
-console = Console()
-
+init(autoreset=True)
 
 def main():
     default_english_dictionary_file_path = os.path.join(
@@ -31,8 +29,8 @@ def main():
         type=int,
         help="The number you want to convert to words"
     )
-    parser.add_argument(
 
+    parser.add_argument(
         "--words",
         type=str,
         help="The words you want to convert to a number"
@@ -41,7 +39,7 @@ def main():
     parser.add_argument(
         "-v", "--version",
         action="version",
-        version=f"pyn2w Version 1.2",
+        version="pyn2w Version 1.2",
         help="Show program's version number and exit."
     )
 
@@ -49,20 +47,19 @@ def main():
     converter = PyNum2Words(arguments.dict)
 
     if arguments.number is not None:
-        console.print(f"[bold green]Result:[/bold green] {converter.number_to_words(arguments.number)}")
+        result = converter.number_to_words(arguments.number)
+        print(f"{Fore.GREEN + Style.BRIGHT}Result: {Style.RESET_ALL}{result}")
     elif arguments.words:
-        console.print(f"[bold green]Result:[/bold green] {converter.words_to_number(arguments.words)}")
+        result = converter.words_to_number(arguments.words)
+        print(f"{Fore.GREEN + Style.BRIGHT}Result: {Style.RESET_ALL}{result}")
     else:
-        console.print(Panel.fit(
-            "[bold yellow]Either --number or --words must be provided.[/bold yellow]\n\n"
-            "Examples:\n"
-            "  pyn2w --number 123\n"
-            "  pyn2w --words 'One Hundred Twenty Three'\n"
-            "  pyn2w --dict path/to/your/custom/dictionary --number 5",
-            title="📘 Usage Help",
-            border_style="red"
-        ))
-
+        print(f"{Fore.RED + Style.BRIGHT}📘 Usage Help{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}Either --number or --words must be provided.\n")
+        print("Examples:")
+        print(f"  {Fore.CYAN}pyn2w --number 123{Style.RESET_ALL}")
+        print(f"  {Fore.CYAN}pyn2w --words 'One Hundred Twenty Three'{Style.RESET_ALL}")
+        print(f"  {Fore.CYAN}pyn2w --dict path/to/your/custom/dictionary --number 5{Style.RESET_ALL}")
+        print(f"  {Fore.CYAN}pyn2w --dict path/to/your/custom/dictionary --word 'One Hundred Twenty Three' {Style.RESET_ALL}")
 
 if __name__ == "__main__":
     main()
