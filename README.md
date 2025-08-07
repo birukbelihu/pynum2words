@@ -42,6 +42,44 @@ Go inside the project directory:
 cd pynum2words
 ```
 
+### Set up Python virtual environment(I recommend using [uv](https://github.com/astral-sh/uv) for lightning speed)
+
+### With uv
+
+```bash
+uv venv .venv
+```
+
+### With Python
+
+```bash
+python -m venv .venv
+```
+
+# Activate virtual environment
+
+```bash
+.venv\Scripts\activate # On Windows
+```
+
+```bash
+source .venv/bin/activate # On Linux, WSL & macOS
+```
+
+# Install required dependencies
+
+### With uv
+
+```bash
+uv pip install -r requirements.txt
+```
+
+### With Python
+
+```bash
+pip install -r requirements.txt
+```
+
 Install pynum2words:
 
 ```
