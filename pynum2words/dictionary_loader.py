@@ -2,7 +2,7 @@ from importlib.resources import files
 from typing import Tuple, Dict
 
 
-def load_num2words_dictionary(dictionary_name: str, suppress_error: bool = False) -> Tuple[
+def load_pynum2words_dictionary(dictionary_name: str, suppress_error: bool = False) -> Tuple[
     Dict[int, str], Dict[str, int]]:
     dictionary_file_path = files("pynum2words.dictionaries").joinpath(dictionary_name)
     number_to_word = {}
