@@ -41,7 +41,7 @@ def main():
     parser.add_argument(
         "-v", "--version",
         action="version",
-        version=f"pynum2words Version 1.2",
+        version=f"pyn2w Version 1.2",
         help="Show program's version number and exit."
     )
 
