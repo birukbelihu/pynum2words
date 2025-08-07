@@ -32,15 +32,17 @@ def main():
         help="The number you want to convert to words"
     )
     parser.add_argument(
+
         "--words",
         type=str,
         help="The words you want to convert to a number"
     )
 
     parser.add_argument(
-        "--version",
-        action="store_true",
-        help="pynum2words CLI"
+        "-v", "--version",
+        action="version",
+        version=f"pynum2words Version 1.2",
+        help="Show program's version number and exit."
     )
 
     arguments = parser.parse_args()
@@ -50,8 +52,6 @@ def main():
         console.print(f"[bold green]Result:[/bold green] {converter.number_to_words(arguments.number)}")
     elif arguments.words:
         console.print(f"[bold green]Result:[/bold green] {converter.words_to_number(arguments.words)}")
-    elif arguments.version:
-        console.print(f"[blue]pynum2words Version 1.2[/blue]")
     else:
         console.print(Panel.fit(
             "[bold yellow]Either --number or --words must be provided.[/bold yellow]\n\n"
