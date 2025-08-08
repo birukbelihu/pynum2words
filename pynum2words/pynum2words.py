@@ -1,4 +1,5 @@
 import math
+import difflib
 from typing import Dict, Tuple
 import importlib.resources
 import os
@@ -103,7 +104,12 @@ class PyNum2Words:
                 continue
             value = self.word2num.get(token)
             if value is None:
-                raise ValueError(f"Invalid Word: {token}")
+                suggestion = difflib.get_close_matches(token, self.word2num.keys(), n=1, cutoff=0.7)
+                if suggestion:
+                  suggestion = suggestion[0]
+                  raise ValueError(f"Invalid Word: {token}, Did you mean {suggestion}")
+                else:
+                 raise ValueError(f"Invalid Word: {token}")
             if value == 100:
                 if current == 0:
                     current = 1
