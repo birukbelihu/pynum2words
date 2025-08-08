@@ -1,10 +1,10 @@
 # pynum2words
 
-![Python](https://img.shields.io/pypi/pyversions/pynum2words)
 ![GitHub Repo stars](https://img.shields.io/github/stars/BirukBelihu/pynum2words)
 ![GitHub forks](https://img.shields.io/github/forks/BirukBelihu/pynum2words)
 ![GitHub issues](https://img.shields.io/github/issues/BirukBelihu/pynum2words)
 [![PyPI Downloads](https://static.pepy.tech/badge/pynum2words)](https://pepy.tech/projects/pynum2words)
+![Python](https://img.shields.io/pypi/pyversions/pynum2words)
 
 **pynum2words** is a Python library for converting numbers to their word representation and vice versa, using a built-in or custom dictionary.
 
@@ -16,11 +16,11 @@ GitHub: [pynum2words](https://github.com/BirukBelihu/pynum2words)
 
 - 🔧 Highly customizable
 - 🔢 Convert number ➜ word and word ➜ number without an upper limit
-- 🌍 Supports custom language dictionaries (`.n2w`)
 - 🌐 25+ Built-in Language dictionaries out of the box
+- 🌍 Supports custom language dictionaries (`.n2w`)
 - 🚀 Support comments on the dictionaries(#, //, /*, */, ;).  
 - 📦 Command line & python API support
-- ✅ Autocorrect words with typo in number to word conversion(Preview feature)
+- ✅ Autocorrect words with typo in words to number conversion(**Preview feature**)
 
 ---
 
