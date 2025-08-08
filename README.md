@@ -1,5 +1,6 @@
 # pynum2words
 
+![Python](https://img.shields.io/pypi/pyversions/pynum2words)
 ![GitHub Repo stars](https://img.shields.io/github/stars/BirukBelihu/pynum2words)
 ![GitHub forks](https://img.shields.io/github/forks/BirukBelihu/pynum2words)
 ![GitHub issues](https://img.shields.io/github/issues/BirukBelihu/pynum2words)
@@ -19,6 +20,7 @@ GitHub: [pynum2words](https://github.com/BirukBelihu/pynum2words)
 - 🌐 25+ Built-in Language dictionaries out of the box
 - 🚀 Support comments on the dictionaries(#, //, /*, */, ;).  
 - 📦 Command line & python API support
+- ✅ Autocorrect words with typo in number to word conversion(Preview feature)
 
 ---
 
@@ -97,7 +99,7 @@ pip install -e .
 pyn2w --number 12345
 # Output: Twelve Thousand Three Hundred Forty Five
 
-# Convert words to number with custom dictionary
+# Convert words to number with custom dictionary(You can also add autocorrect(--ac) flag if you're using the preview version(1.3.5)
 pyn2w --word "ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ ሰላሳ ሶስት" --dict dictionaries/amharic.n2w
 # Output: 257533
 ```
