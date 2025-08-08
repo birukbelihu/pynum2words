@@ -4,6 +4,7 @@ from typing import Dict, Tuple
 import importlib.resources
 import os
 
+
 def load_pynum2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[str, int]]:
     number_to_word = {}
     comments = ['#', '//', '/*', '*/', ';']
@@ -41,9 +42,11 @@ def load_pynum2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[st
     word_to_number = {v.lower(): k for k, v in number_to_word.items()}
     return dict(sorted(number_to_word.items())), word_to_number
 
+
 class PyNum2Words:
-    def __init__(self, dict_file_path: str):
+    def __init__(self, dict_file_path: str, auto_correct: bool = False):
         self.num2word, self.word2num = load_pynum2words_dictionary(dict_file_path)
+        self.auto_correct = auto_correct
         self.base_units = self.get_base_units()
 
     def get_base_units(self) -> Dict[int, str]:
@@ -104,12 +107,15 @@ class PyNum2Words:
                 continue
             value = self.word2num.get(token)
             if value is None:
-                suggestion = difflib.get_close_matches(token, self.word2num.keys(), n=1, cutoff=0.7)
-                if suggestion:
-                  suggestion = suggestion[0]
-                  raise ValueError(f"Invalid Word: {token}, Did you mean {suggestion}")
+                if self.auto_correct:
+                    suggestion = self.get_fuzzy_match(token)
+                    if suggestion:
+                        token = suggestion
+                        value = self.word2num[token]
+                    else:
+                        raise ValueError(f"Invalid Word: {token}. No match found.")
                 else:
-                 raise ValueError(f"Invalid Word: {token}")
+                    raise ValueError(f"Invalid Word: {token}, Did you mean {self.get_fuzzy_match(token)}")
             if value == 100:
                 if current == 0:
                     current = 1
@@ -124,3 +130,7 @@ class PyNum2Words:
                 current += value
 
         return total + current
+
+    def get_fuzzy_match(self, word: str, cutoff: float = 0.7) -> str:
+        matches = difflib.get_close_matches(word, self.word2num.keys(), n=1, cutoff=cutoff)
+        return matches[0] if matches else None
