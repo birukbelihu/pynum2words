@@ -37,6 +37,12 @@ def main():
     )
 
     parser.add_argument(
+        "--ac",
+        action="store_true",
+        help="Enable auto correction in words with typo if available"
+    )
+
+    parser.add_argument(
         "-v", "--version",
         action="version",
         version="pyn2w Version 1.2",
@@ -44,7 +50,11 @@ def main():
     )
 
     arguments = parser.parse_args()
-    converter = PyNum2Words(arguments.dict)
+
+    if arguments.ac:
+        converter = PyNum2Words(arguments.dict, auto_correct=True)
+    else:
+        converter = PyNum2Words(arguments.dict)
 
     if arguments.number is not None:
         result = converter.number_to_words(arguments.number)
