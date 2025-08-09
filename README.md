@@ -21,6 +21,7 @@ GitHub: [pynum2words](https://github.com/BirukBelihu/pynum2words)
 - 🚀 Support comments on the dictionaries(#, //, /*, */, ;).  
 - 📦 Command line & python API support
 - ✅ Autocorrect words with typo in words to number converter (**Preview feature**)
+- 📐 Format numbers in word to number conversion (**Preview feature**)
 
 ---
 
