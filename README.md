@@ -113,7 +113,7 @@ from pynum2words.pynum2words import PyNum2Words
 
 # Initialize converter
 
-english_converter = PyNum2Words(english_dictionary())
+english_converter = PyNum2Words(english_dictionary(), auto_correct=True)
 
 # Number to words(English)
 print(english_converter.number_to_words(49285294))  # Output: Forty Nine Million Two Hundred Eighty Five Thousand Two Hundred Ninety Four

@@ -5,7 +5,7 @@ from pynum2words.builtin_dictionaries import (afrikaans_dictionary,
 
 # Initialize converters for each language
 
-afrikaans_converter = PyNum2Words(afrikaans_dictionary(), auto_correct=True)
+afrikaans_converter = PyNum2Words(afrikaans_dictionary(), auto_correct=True, format_number=False)
 amharic_converter = PyNum2Words(amharic_dictionary(), auto_correct=True)
 english_converter = PyNum2Words(english_dictionary(), auto_correct=True)
 
