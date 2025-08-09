@@ -44,9 +44,10 @@ def load_pynum2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[st
 
 
 class PyNum2Words:
-    def __init__(self, dict_file_path: str, auto_correct: bool = False):
+    def __init__(self, dict_file_path: str, auto_correct: bool = False, format_number: bool = True):
         self.num2word, self.word2num = load_pynum2words_dictionary(dict_file_path)
         self.auto_correct = auto_correct
+        self.format_number = format_number
         self.base_units = self.get_base_units()
 
     def get_base_units(self) -> Dict[int, str]:
@@ -92,15 +93,15 @@ class PyNum2Words:
                     break
         return " ".join(result)
 
-    def words_to_number(self, words: str) -> int:
+    def words_to_number(self, words: str) -> str:
         words = ' '.join(words.strip().lower().split())
         if words.startswith("negative"):
-            return -self.words_to_number(words[8:].strip())
+            return f"-{self.words_to_number(words[8:].strip())}"
 
         tokens = words.split()
         total = 0
         current = 0
-        ignore_words = {'e'}
+        ignore_words = {'e', "and"}
 
         for token in tokens:
             if token in ignore_words:
@@ -128,6 +129,11 @@ class PyNum2Words:
                 current = 0
             else:
                 current += value
+
+        number = total + current
+
+        if self.format_number:
+            return f"{number:,}"
 
         return total + current
 
