@@ -11,7 +11,7 @@ english_converter = PyNum2Words(english_dictionary(), auto_correct=True)
 
 # Number to words(Afrikaans)
 print(afrikaans_converter.number_to_words(41081510))  # Output: ሁለት መቶ አርባ ስምንት ሺህ ዘጠኝ መቶ አስር አራት
-# Words to number(Amharic)
+# Words to number(Afrikaans)
 print(afrikaans_converter.words_to_number("twee Honderd Vyftig Sewe Duisend Vyf Honderd Dertig Drie"))  # Output: 257533
 
 # Number to words(Amharic)

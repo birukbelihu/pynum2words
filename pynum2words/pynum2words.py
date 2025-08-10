@@ -1,14 +1,17 @@
-import math
-import difflib
-from typing import Dict, Tuple
-import importlib.resources
 import os
+import difflib
+import importlib.resources
+from typing import Dict, Tuple
 
 
 def load_pynum2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[str, int]]:
+    """
+    Load dictionary file into two mappings:
+    - number_to_word: {int: str}
+    - word_to_number: {str: int} (lowercased)
+    """
     number_to_word = {}
-    comments = ['#', '//', '/*', '*/', ';']
-
+    comments = ('#', '//', '/*', '*/', ';')
     lines = []
 
     if os.path.isfile(file_path):
@@ -22,20 +25,16 @@ def load_pynum2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[st
         except (ModuleNotFoundError, FileNotFoundError):
             raise FileNotFoundError(f"Dictionary file not found: {file_path}")
 
-    for i, line in enumerate(lines, start=1):
-        line = line.strip()
-        if not line or any(line.startswith(prefix) for prefix in comments):
+    for i, raw_line in enumerate(lines, start=1):
+        line = raw_line.strip()
+        if not line or line.startswith(comments):
             continue
-
         if '=' not in line:
-            raise ValueError(f"Line {i} Invalid format: {line} — expected 'number = word'")
+            raise ValueError(f"Line {i}: Invalid format — expected 'number = word'")
 
-        key, value = line.split('=', 1)
-        key = key.strip()
-        value = value.strip()
-
+        key, value = map(str.strip, line.split('=', 1))
         if not key.isdigit() or not value:
-            raise ValueError(f"Invalid entry at line {i}: {line} — left must be number, right non-empty")
+            raise ValueError(f"Line {i}: Invalid entry — left must be number, right non-empty")
 
         number_to_word[int(key)] = value
 
@@ -51,91 +50,91 @@ class PyNum2Words:
         self.base_units = self.get_base_units()
 
     def get_base_units(self) -> Dict[int, str]:
+        """
+        Extract scaling units (hundred, thousand, million, etc.) from the dictionary.
+        These are numbers that are powers of 10 and >= 100.
+        """
         units = {}
-        for num in self.num2word:
-            if num >= 100 and (math.log10(num) % 3 == 0 or num == 100):
-                units[num] = self.num2word[num]
+        for num, word in self.num2word.items():
+            s = str(num)
+            if num >= 100 and s.startswith("1") and all(ch == "0" for ch in s[1:]):
+                units[num] = word
         return dict(sorted(units.items(), reverse=True))
 
     def number_to_words(self, number: int) -> str:
-        if number == 0 and 0 in self.num2word:
-            return self.num2word[0]
+        """Convert integer to words using recursive scale-aware logic."""
+        num2word = self.num2word  # local binding
+        base_units = self.base_units
+
+        if number == 0 and 0 in num2word:
+            return num2word[0]
         if number < 0:
             return "Negative " + self.number_to_words(-number)
+        if number in num2word:
+            return num2word[number]
 
-        if number in self.num2word:
-            return self.num2word[number]
-
-        result = []
+        # Numbers < 100 (tens + units)
         if number < 100:
-            tens = number - number % 10
-            units = number % 10
+            tens, units = divmod(number, 10)
+            parts = []
             if tens:
-                result.append(self.num2word.get(tens, str(tens)))
+                parts.append(num2word.get(tens * 10, str(tens * 10)))
             if units:
-                result.append(self.num2word.get(units, str(units)))
-        elif number < 1000:
-            hundreds = number // 100
-            remainder = number % 100
-            result.append(self.num2word.get(hundreds, str(hundreds)))
-            result.append(self.num2word[100])
-            if remainder:
-                result.append(self.number_to_words(remainder))
-        else:
-            for unit, name in self.base_units.items():
-                if number >= unit:
-                    quotient = number // unit
-                    remainder = number % unit
-                    result.append(self.number_to_words(quotient))
-                    result.append(name)
-                    if remainder:
-                        result.append(self.number_to_words(remainder))
-                    break
-        return " ".join(result)
+                parts.append(num2word.get(units, str(units)))
+            return " ".join(parts)
 
-    def words_to_number(self, words: str) -> str:
-        words = ' '.join(words.strip().lower().split())
+        for unit, name in base_units.items():
+            if number >= unit:
+                q, r = divmod(number, unit)
+                parts = [self.number_to_words(q), name]
+                if r:
+                    parts.append(self.number_to_words(r))
+                return " ".join(parts)
+
+        return str(number)  # Fallback if dictionary incomplete
+
+    def words_to_number(self, words: str):
+        """Convert words back to number with O(n) complexity."""
+        words = " ".join(words.strip().replace("-", " ").lower().split())
         if words.startswith("negative"):
             return f"-{self.words_to_number(words[8:].strip())}"
 
         tokens = words.split()
         total = 0
         current = 0
-        ignore_words = {'e', "and"}
+        word2num = self.word2num
+        ignore_words = {"and"}
 
         for token in tokens:
             if token in ignore_words:
                 continue
-            value = self.word2num.get(token)
+
+            value = word2num.get(token)
             if value is None:
                 if self.auto_correct:
                     suggestion = self.get_fuzzy_match(token)
                     if suggestion:
-                        token = suggestion
-                        value = self.word2num[token]
+                        value = word2num[suggestion]
                     else:
-                        raise ValueError(f"Invalid Word: {token}. No match found.")
+                        raise ValueError(f"Invalid word: {token}")
                 else:
-                    raise ValueError(f"Invalid Word: {token}, Did you mean {self.get_fuzzy_match(token)}")
-            if value == 100:
-                if current == 0:
-                    current = 1
-                current *= value
-            elif value >= 1000:
+                    raise ValueError(f"Invalid word: {token}, Did you mean {self.get_fuzzy_match(token)}?")
+
+            if value >= 1000:
                 if current == 0:
                     current = 1
                 current *= value
                 total += current
                 current = 0
+            elif value == 100:
+                if current == 0:
+                    current = 1
+                current *= value
             else:
                 current += value
 
         number = total + current
-
-        if self.format_number:
-            return f"{number:,}"
-
-        return total + current
+        return f"{number:,}" if self.format_number else number
 
     def get_fuzzy_match(self, word: str, cutoff: float = 0.7) -> str:
         matches = difflib.get_close_matches(word, self.word2num.keys(), n=1, cutoff=cutoff)
