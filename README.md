@@ -16,7 +16,7 @@ GitHub: [pynum2words](https://github.com/BirukBelihu/pynum2words)
 
 - 🔧 Highly customizable
 - 🔢 Convert number ➜ word and word ➜ number without an upper limit
-- 🌐 25+ Built-in Language dictionaries out of the box
+- 🌐 35+ Built-in Language dictionaries out of the box
 - 🌍 Supports custom language dictionaries (`.n2w`)
 - 🚀 Support comments on the dictionaries(#, //, /*, */, ;).  
 - 📦 Command line & python API support
@@ -108,8 +108,8 @@ pyn2w --word "ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ �
 ### Python
 
 ```python
-from pynum2words.builtin_dictionaries import english_dictionary
 from pynum2words.pynum2words import PyNum2Words
+from pynum2words.builtin_dictionaries import english_dictionary
 
 # Initialize converter
 
