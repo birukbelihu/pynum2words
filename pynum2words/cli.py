@@ -19,12 +19,6 @@ def main():
     )
 
     parser.add_argument(
-        "--dict",
-        default=default_english_dictionary_file_path,
-        help="Path to your custom dictionary (.n2w) file [default: English]"
-    )
-
-    parser.add_argument(
         "--number",
         type=int,
         help="The number you want to convert to words"
@@ -34,6 +28,12 @@ def main():
         "--words",
         type=str,
         help="The words you want to convert to a number"
+    )
+
+    parser.add_argument(
+        "--dict",
+        default=default_english_dictionary_file_path,
+        help="Path to your custom dictionary (.n2w) file [default: English]"
     )
 
     parser.add_argument(

@@ -117,8 +117,10 @@ class PyNum2Words:
                         value = word2num[suggestion]
                     else:
                         raise ValueError(f"Invalid word: {token}")
-                else:
+                elif self.get_fuzzy_match(token) is not None:
                     raise ValueError(f"Invalid word: {token}, Did you mean {self.get_fuzzy_match(token)}?")
+                else:
+                    raise ValueError(f"Invalid word: {token}. No match found.")
 
             if value >= 1000:
                 if current == 0:

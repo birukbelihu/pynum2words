@@ -129,8 +129,11 @@ print(english_converter.words_to_number("Two Hundred Forty One Thousand Eight Hu
 - **Armenian**: `pynum2words.builtin_dictionaries.armenian_dictionary()`
 - **Bengali**: `pynum2words.builtin_dictionaries.bengali_dictionary()`
 - **Chinese**: `pynum2words.builtin_dictionaries.chinese_dictionary()`
+- **Czech**: `pynum2words.builtin_dictionaries.czech_dictionary()`
+- **Danish**: `pynum2words.builtin_dictionaries.danish_dictionary()`
 - **Dutch**: `pynum2words.builtin_dictionaries.dutch_dictionary()`
 - **English**: `pynum2words.builtin_dictionaries.english_dictionary()`
+- **Filipino**: `pynum2words.builtin_dictionaries.filipino_dictionary()`
 - **Finnish**: `pynum2words.builtin_dictionaries.finnish_dictionary()`
 - **French**: `pynum2words.builtin_dictionaries.french_dictionary()`
 - **German**: `pynum2words.builtin_dictionaries.german_dictionary()`
@@ -141,18 +144,23 @@ print(english_converter.words_to_number("Two Hundred Forty One Thousand Eight Hu
 - **Italian**: `pynum2words.builtin_dictionaries.italian_dictionary()`
 - **Japanese**: `pynum2words.builtin_dictionaries.japanese_dictionary()`
 - **Kannada**: `pynum2words.builtin_dictionaries.kannada_dictionary()`
+- **Khmer**: `pynum2words.builtin_dictionaries.khmer_dictionary()`
 - **Korean**: `pynum2words.builtin_dictionaries.korean_dictionary()`
+- **Lao**: `pynum2words.builtin_dictionaries.lao_dictionary()`
 - **Malay**: `pynum2words.builtin_dictionaries.malay_dictionary()`
-- **Oromo**: `pynum2words.builtin_dictionaries.oromo_dictionary()`
+- **Nepali**: `pynum2words.builtin_dictionaries.nepali_dictionary()`
+- **Norwegian**: `pynum2words.builtin_dictionaries.norwegian_dictionary()`
 - **Persian**: `pynum2words.builtin_dictionaries.persian_dictionary()`
 - **Portuguese**: `pynum2words.builtin_dictionaries.portuguese_dictionary()`
 - **Romanian**: `pynum2words.builtin_dictionaries.romanian_dictionary()`
 - **Russian**: `pynum2words.builtin_dictionaries.russian_dictionary()`
+- **Slovak**: `pynum2words.builtin_dictionaries.slovak_dictionary()`
+- **Somali**: `pynum2words.builtin_dictionaries.somali_dictionary()`
 - **Spanish**: `pynum2words.builtin_dictionaries.spanish_dictionary()`
 - **Swahili**: `pynum2words.builtin_dictionaries.swahili_dictionary()`
-- **Tigrinya**: `pynum2words.builtin_dictionaries.tigrinya_dictionary()`
+- **Swedish**: `pynum2words.builtin_dictionaries.swedish_dictionary()`
 - **Turkish**: `pynum2words.builtin_dictionaries.turkish_dictionary()`
-- **Ukrainian**: `pynum2words.builtin_dictionaries.ukrainian_dictionary()`
+- **Ukrainian**: `pynum2words.builtin_dictionaries.ukranian_dictionary()`
 - **Urdu**: `pynum2words.builtin_dictionaries.urdu_dictionary()`
 - **Zulu**: `pynum2words.builtin_dictionaries.zulu_dictionary()`
 
@@ -170,4 +178,4 @@ If your language dictionary is not listed here you can create your own dictionar
 
 ## 📄 License
 
-This project is licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Apache License 2.0**. See the [LICENSE](https://github.com/birukbelihu/pynum2words/blob/master/LICENSE) file for details.
