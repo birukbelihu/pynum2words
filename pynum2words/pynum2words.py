@@ -50,10 +50,6 @@ class PyNum2Words:
         self.base_units = self.get_base_units()
 
     def get_base_units(self) -> Dict[int, str]:
-        """
-        Extract scaling units (hundred, thousand, million, etc.) from the dictionary.
-        These are numbers that are powers of 10 and >= 100.
-        """
         units = {}
         for num, word in self.num2word.items():
             s = str(num)
@@ -62,36 +58,39 @@ class PyNum2Words:
         return dict(sorted(units.items(), reverse=True))
 
     def number_to_words(self, number: int) -> str:
-        """Convert integer to words using recursive scale-aware logic."""
-        num2word = self.num2word  # local binding
-        base_units = self.base_units
-
-        if number == 0 and 0 in num2word:
-            return num2word[0]
+        if number == 0 and 0 in self.num2word:
+            return self.num2word[0]
         if number < 0:
             return "Negative " + self.number_to_words(-number)
-        if number in num2word:
-            return num2word[number]
+        if number in self.num2word:
+            return self.num2word[number]
 
-        # Numbers < 100 (tens + units)
-        if number < 100:
-            tens, units = divmod(number, 10)
-            parts = []
-            if tens:
-                parts.append(num2word.get(tens * 10, str(tens * 10)))
-            if units:
-                parts.append(num2word.get(units, str(units)))
-            return " ".join(parts)
+        base_units = self.base_units
+        scales_sorted = sorted(base_units.keys())
 
-        for unit, name in base_units.items():
-            if number >= unit:
-                q, r = divmod(number, unit)
-                parts = [self.number_to_words(q), name]
-                if r:
-                    parts.append(self.number_to_words(r))
-                return " ".join(parts)
+        parts = []
+        remainder = number
+        scale_index = len(scales_sorted) - 1
 
-        return str(number)  # Fallback if dictionary incomplete
+        while remainder > 0 and scale_index >= 0:
+            scale = scales_sorted[scale_index]
+            group = remainder // scale
+            remainder = remainder % scale
+
+            if group > 0:
+                if scale == 100:
+                    parts.append(self._convert_hundreds(group * 100))
+                elif scale == 1:
+                    parts.append(self._convert_hundreds(group))
+                else:
+                    parts.append(f"{self._convert_hundreds(group)} {base_units[scale]}")
+
+            scale_index -= 1
+
+        if remainder > 0:
+            parts.append(self._convert_hundreds(remainder))
+
+        return " ".join(parts).strip()
 
     def words_to_number(self, words: str):
         """Convert words back to number with O(n) complexity."""
@@ -137,6 +136,33 @@ class PyNum2Words:
 
         number = total + current
         return f"{number:,}" if self.format_number else number
+
+    def _convert_hundreds(self, number: int) -> str:
+        if number >= 1000:
+            raise ValueError(f"_convert_hundreds expects number < 1000, got {number}")
+
+        if number in self.num2word:
+            return self.num2word[number]
+
+        parts = []
+        hundreds = number // 100
+        remainder = number % 100
+
+        if hundreds > 0:
+            parts.append(f"{self.num2word[hundreds]} {self.num2word[100]}")
+
+        if remainder > 0:
+            if remainder in self.num2word:
+                parts.append(self.num2word[remainder])
+            else:
+                tens = remainder - remainder % 10
+                units = remainder % 10
+                if tens > 0:
+                    parts.append(self.num2word.get(tens, str(tens)))
+                if units > 0:
+                    parts.append(self.num2word.get(units, str(units)))
+
+        return " ".join(parts)
 
     def get_fuzzy_match(self, word: str, cutoff: float = 0.7) -> str:
         matches = difflib.get_close_matches(word, self.word2num.keys(), n=1, cutoff=cutoff)

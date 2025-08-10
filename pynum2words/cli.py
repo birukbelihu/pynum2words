@@ -43,6 +43,12 @@ def main():
     )
 
     parser.add_argument(
+        "--nf",
+        action="store_true",
+        help="Disable number formatting when converting words to number."
+    )
+
+    parser.add_argument(
         "-v", "--version",
         action="version",
         version="pyn2w Version 1.2",
@@ -51,8 +57,12 @@ def main():
 
     arguments = parser.parse_args()
 
-    if arguments.ac:
+    if arguments.ac and arguments.nf:
+        converter = PyNum2Words(arguments.dict, auto_correct=True, format_number=False)
+    elif arguments.ac:
         converter = PyNum2Words(arguments.dict, auto_correct=True)
+    elif arguments.nf:
+        converter = PyNum2Words(arguments.dict, format_number=False)
     else:
         converter = PyNum2Words(arguments.dict)
 

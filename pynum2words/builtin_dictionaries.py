@@ -21,6 +21,12 @@ def bengali_dictionary():
 def chinese_dictionary():
     return get_dictionary_file_path("chinese")
 
+def czech_dictionary():
+    return get_dictionary_file_path("czech")
+
+def danish_dictionary():
+    return get_dictionary_file_path("danish")
+
 def dutch_dictionary():
     return get_dictionary_file_path("dutch")
 
@@ -29,6 +35,9 @@ def english_dictionary():
 
 def finnish_dictionary():
     return get_dictionary_file_path("finnish")
+
+def filipino_dictionary():
+    return get_dictionary_file_path("filipino")
 
 def french_dictionary():
     return get_dictionary_file_path("french")
@@ -57,11 +66,23 @@ def japanese_dictionary():
 def kannada_dictionary():
     return get_dictionary_file_path("kannada")
 
+def laos_dictionary():
+    return get_dictionary_file_path("laos")
+
+def khmer_dictionary():
+    return get_dictionary_file_path("khmer")
+
 def korean_dictionary():
     return get_dictionary_file_path("korean")
 
 def malay_dictionary():
     return get_dictionary_file_path("malay")
+
+def nepali_dictionary():
+    return get_dictionary_file_path("nepali")
+
+def norwegian_dictionary():
+    return get_dictionary_file_path("norwegian")
 
 def oromo_dictionary():
     return get_dictionary_file_path("oromo")
@@ -78,14 +99,35 @@ def romanian_dictionary():
 def russian_dictionary():
     return get_dictionary_file_path("russian")
 
+def slovak_dictionary():
+    return get_dictionary_file_path("slovak")
+
+def somali_dictionary():
+    return get_dictionary_file_path("somali")
+
+def swedish_dictionary():
+    return get_dictionary_file_path("swedish")
+
 def spanish_dictionary():
     return get_dictionary_file_path("spanish")
 
 def swahili_dictionary():
     return get_dictionary_file_path("swahili")
 
+def thai_dictionary():
+    return get_dictionary_file_path("thai")
+
 def tigrinya_dictionary():
     return get_dictionary_file_path("tigrinya")
 
 def turkish_dictionary():
     return get_dictionary_file_path("turkish")
+
+def ukrainian_dictionary():
+    return get_dictionary_file_path("ukrainian")
+
+def urdu_dictionary():
+    return get_dictionary_file_path("urdu")
+
+def vietnamese_dictionary():
+    return get_dictionary_file_path("vietnamese")

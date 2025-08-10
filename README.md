@@ -3,7 +3,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/BirukBelihu/pynum2words)
 ![GitHub forks](https://img.shields.io/github/forks/BirukBelihu/pynum2words)
 ![GitHub issues](https://img.shields.io/github/issues/BirukBelihu/pynum2words)
-[![PyPI Downloads](https://static.pepy.tech/badge/pynum2words)](https://pepy.tech/projects/pynum2words)
+[![PyPI Downloads](https://static.pepy.tech/badge/pynum2words)](https://pepy.tech/projects/pynum2words)<br>
 ![Python](https://img.shields.io/pypi/pyversions/pynum2words)
 
 **pynum2words** is a Python library for converting numbers to their word representation and vice versa, using a built-in or custom dictionary.
@@ -16,7 +16,7 @@ GitHub: [pynum2words](https://github.com/BirukBelihu/pynum2words)
 
 - 🔧 Highly customizable
 - 🔢 Convert number ➜ word and word ➜ number without an upper limit
-- 🌐 35+ Built-in Language dictionaries out of the box
+- 🌐 40+ Built-in Language dictionaries out of the box
 - 🌍 Supports custom language dictionaries (`.n2w`)
 - 🚀 Support comments on the dictionaries(#, //, /*, */, ;).  
 - 📦 Command line & python API support
@@ -159,6 +159,7 @@ print(english_converter.words_to_number("Two Hundred Forty One Thousand Eight Hu
 - **Spanish**: `pynum2words.builtin_dictionaries.spanish_dictionary()`
 - **Swahili**: `pynum2words.builtin_dictionaries.swahili_dictionary()`
 - **Swedish**: `pynum2words.builtin_dictionaries.swedish_dictionary()`
+- **Thai**: `pynum2words.builtin_dictionaries.thai_dictionary()`
 - **Turkish**: `pynum2words.builtin_dictionaries.turkish_dictionary()`
 - **Ukrainian**: `pynum2words.builtin_dictionaries.ukranian_dictionary()`
 - **Urdu**: `pynum2words.builtin_dictionaries.urdu_dictionary()`
