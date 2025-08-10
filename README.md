@@ -20,8 +20,8 @@ GitHub: [pynum2words](https://github.com/BirukBelihu/pynum2words)
 - 🌍 Supports custom language dictionaries (`.n2w`)
 - 🚀 Support comments on the dictionaries(#, //, /*, */, ;).  
 - 📦 Command line & python API support
-- ✅ Autocorrect words with typo in words to number converter (**Preview feature**)
-- 📐 Format numbers in word to number conversion (**Preview feature**)
+- ✅ Autocorrect words with typo in words to number converter
+- 📐 Format numbers in word to number conversion
 
 ---
 
