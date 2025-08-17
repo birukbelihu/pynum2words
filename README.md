@@ -109,14 +109,15 @@ pyn2w --word "ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ �
 
 ```python
 from pynum2words.pynum2words import PyNum2Words
-from pynum2words.builtin_dictionaries import english_dictionary
+from pynum2words.dictionaries import english_dictionary
 
 # Initialize converter
 
 english_converter = PyNum2Words(english_dictionary(), auto_correct=True)
 
 # Number to words(English)
-print(english_converter.number_to_words(49285294))  # Output: Forty Nine Million Two Hundred Eighty Five Thousand Two Hundred Ninety Four
+print(english_converter.number_to_words(
+    49285294))  # Output: Forty Nine Million Two Hundred Eighty Five Thousand Two Hundred Ninety Four
 # Words to number(English)
 print(english_converter.words_to_number("Two Hundred Forty One Thousand Eight Hundred Forty One"))  # Output: 241841
 ```

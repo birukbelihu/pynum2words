@@ -1,7 +1,7 @@
 from pynum2words.pynum2words import PyNum2Words
-from pynum2words.builtin_dictionaries import (afrikaans_dictionary,
-                                              amharic_dictionary,
-                                              english_dictionary)
+from pynum2words.dictionaries import (afrikaans_dictionary,
+                                      amharic_dictionary,
+                                      english_dictionary)
 
 # Initialize converters for each language
 

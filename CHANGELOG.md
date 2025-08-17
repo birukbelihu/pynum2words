@@ -6,16 +6,17 @@
 ### Added 
 - Autocorrection feature for words-to-number conversion that suggests corrections for typos based on the provided dictionary. Enable it by setting the `auto_correct` parameter to `True`. 
  
-**Example:** 
+**Example:**
 
 ```python 
-from pynum2words.builtin_dictionaries import english_dictionary
+from pynum2words.dictionaries import english_dictionary
 from pynum2words.pynum2words import PyNum2Words
 
 english_converter = PyNum2Words(english_dictionary(), auto_correct=True)
 
 # Words to number (English) 
-print(english_converter.words_to_number("Two Hungdred Forty One Tbhousand Ebight Hunvdred Forty One"))  # Output: 241841 
+print(
+  english_converter.words_to_number("Two Hungdred Forty One Tbhousand Ebight Hunvdred Forty One"))  # Output: 241841 
  ```
  
 - Added 12 new language dictionaries: 
@@ -35,10 +36,10 @@ print(english_converter.words_to_number("Two Hungdred Forty One Tbhousand Ebight
   
 - Added a number formatter option for words to number conversion. Enabled by default, but you can disable by setting `format_number` to `False`. 
  
-  **Example:** 
- 
+  **Example:**
+
 ```python 
-from pynum2words.builtin_dictionaries import english_dictionary
+from pynum2words.dictionaries import english_dictionary
 from pynum2words.pynum2words import PyNum2Words
 
 english_converter = PyNum2Words(english_dictionary(), format_number=False)

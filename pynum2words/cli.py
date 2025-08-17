@@ -1,10 +1,8 @@
 import argparse
 import os
-
-from colorama import init, Fore, Style
+from pyglow.pyglow import PyGlow
+from pyglow.styles.foreground import Fore
 from pynum2words import PyNum2Words
-
-init(autoreset=True)
 
 def main():
     default_english_dictionary_file_path = os.path.join(
@@ -68,18 +66,18 @@ def main():
 
     if arguments.number is not None:
         result = converter.number_to_words(arguments.number)
-        print(f"{Fore.GREEN + Style.BRIGHT}Result: {Style.RESET_ALL}{result}")
+        PyGlow.printc(f"{Fore.GREEN}Result: {result}")
     elif arguments.words:
         result = converter.words_to_number(arguments.words)
-        print(f"{Fore.GREEN + Style.BRIGHT}Result: {Style.RESET_ALL}{result}")
+        PyGlow.print(f"[green]Result: [/] {result}")
     else:
-        print(f"{Fore.RED + Style.BRIGHT}📘 Usage Help{Style.RESET_ALL}")
-        print(f"{Fore.YELLOW}Either --number or --words must be provided.\n")
-        print("Examples:")
-        print(f"  {Fore.CYAN}pyn2w --number 123{Style.RESET_ALL}")
-        print(f"  {Fore.CYAN}pyn2w --words 'One Hundred Twenty Three'{Style.RESET_ALL}")
-        print(f"  {Fore.CYAN}pyn2w --dict path/to/your/custom/dictionary --number 5{Style.RESET_ALL}")
-        print(f"  {Fore.CYAN}pyn2w --dict path/to/your/custom/dictionary --word 'One Hundred Twenty Three' {Style.RESET_ALL}")
+        PyGlow.printc(f"{Fore.RED}📘 Usage Help")
+        PyGlow.printc(f"{Fore.YELLOW}Either --number or --words must be provided.\n")
+        PyGlow.printc("Examples:")
+        PyGlow.printc(f"  {Fore.CYAN}pyn2w --number 123")
+        PyGlow.printc(f"  {Fore.CYAN}pyn2w --words 'One Hundred Twenty Three'")
+        PyGlow.printc(f"  {Fore.CYAN}pyn2w --dict path/to/your/custom/dictionary --number 5")
+        PyGlow.printc(f"  {Fore.CYAN}pyn2w --dict path/to/your/custom/dictionary --word 'One Hundred Twenty Three'")
 
 if __name__ == "__main__":
     main()
