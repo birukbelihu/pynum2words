@@ -66,7 +66,7 @@ def main():
 
     if arguments.number is not None:
         result = converter.number_to_words(arguments.number)
-        PyGlow.printc(f"{Fore.GREEN}Result: {result}")
+        PyGlow.print(f"[green]Result:[/] {result}")
     elif arguments.words:
         result = converter.words_to_number(arguments.words)
         PyGlow.print(f"[green]Result: [/] {result}")
