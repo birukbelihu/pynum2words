@@ -36,6 +36,7 @@ def load_pynum2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[st
     word_to_number = {v.lower(): k for k, v in number_to_word.items()}
     return dict(sorted(number_to_word.items())), word_to_number
 
+
 class PyNum2Words:
     def __init__(self, dict_file_path: str, auto_correct: bool = False, format_number: bool = True):
         self.num2word, self.word2num = load_pynum2words_dictionary(dict_file_path)

@@ -4,6 +4,7 @@ from pyglow.pyglow import PyGlow
 from pyglow.styles.foreground import Fore
 from pynum2words import PyNum2Words
 
+
 def main():
     default_english_dictionary_file_path = os.path.join(
         os.path.dirname(__file__),
@@ -78,6 +79,7 @@ def main():
         PyGlow.printc(f"  {Fore.CYAN}pyn2w --words 'One Hundred Twenty Three'")
         PyGlow.printc(f"  {Fore.CYAN}pyn2w --dict path/to/your/custom/dictionary --number 5")
         PyGlow.printc(f"  {Fore.CYAN}pyn2w --dict path/to/your/custom/dictionary --word 'One Hundred Twenty Three'")
+
 
 if __name__ == "__main__":
     main()

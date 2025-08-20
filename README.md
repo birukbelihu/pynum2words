@@ -100,7 +100,7 @@ pip install -e .
 pyn2w --number 12345
 # Output: Twelve Thousand Three Hundred Forty Five
 
-# Convert words to number with custom dictionary(You can also add autocorrect(--ac) flag if you're using the preview version(1.3.5)
+# Convert words to number with custom dictionary(You can also add autocorrect(--ac) flag
 pyn2w --word "ሁለት መቶ ሀምሳ ሰባት ሺህ አምስት መቶ ሰላሳ ሶስት" --dict dictionaries/amharic.n2w
 # Output: 257533
 ```

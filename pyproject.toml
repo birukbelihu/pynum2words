@@ -1,7 +1,7 @@
 [project]
 name = "pynum2words"
-version = "1.3.8"
-description = "A Python library for converting numbers to their word representation and vice versa using a built-in or custom dictionary."
+version = "1.4.0"
+description = "pynum2words is a python library for converting numbers to their word representation and vice versa using a built-in or custom dictionary."
 readme = { file = "README.md", content-type = "text/markdown" }
 
 requires-python = ">=3.9"
@@ -10,7 +10,7 @@ authors = [
   {name = "BirukBelihu", email = "birukbelihu1995@email.com"}
 ]
 dependencies = [
-  "colorama"
+  "pyglowx"
 ]
 
 classifiers = [

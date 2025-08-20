@@ -47,3 +47,12 @@ english_converter = PyNum2Words(english_dictionary(), format_number=False)
 # Words to number (English) 
 print(english_converter.words_to_number("Two Hundred Forty One Thousand Eight Hundred Forty One"))  # Output: 241841 
 ```
+
+## [1.4.0] - 2025-08-20
+
+### Fixed
+- Fixes bug with the convert hundred function
+- Fixes issue with some dictionaries.
+
+### Changes
+- Migrated to more modern & flexible console text formatter library([**pyglowx**](https://github.com/birukbelihu/pyglowx)) for the pyn2w CLI.
