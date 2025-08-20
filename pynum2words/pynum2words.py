@@ -5,11 +5,6 @@ from typing import Dict, Tuple
 
 
 def load_pynum2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[str, int]]:
-    """
-    Load dictionary file into two mappings:
-    - number_to_word: {int: str}
-    - word_to_number: {str: int} (lowercased)
-    """
     number_to_word = {}
     comments = ('#', '//', '/*', '*/', ';')
     lines = []
@@ -41,7 +36,6 @@ def load_pynum2words_dictionary(file_path: str) -> Tuple[Dict[int, str], Dict[st
     word_to_number = {v.lower(): k for k, v in number_to_word.items()}
     return dict(sorted(number_to_word.items())), word_to_number
 
-
 class PyNum2Words:
     def __init__(self, dict_file_path: str, auto_correct: bool = False, format_number: bool = True):
         self.num2word, self.word2num = load_pynum2words_dictionary(dict_file_path)
@@ -49,7 +43,8 @@ class PyNum2Words:
         self.format_number = format_number
         self.base_units = self.get_base_units()
 
-    def get_base_units(self) -> Dict[int, str]:
+    def get_base_units(self) -> dict[int, str]:
+        """Return base units >=100 for grouping (100, 1000, 1000000...)."""
         units = {}
         for num, word in self.num2word.items():
             s = str(num)
@@ -65,35 +60,54 @@ class PyNum2Words:
         if number in self.num2word:
             return self.num2word[number]
 
-        base_units = self.base_units
-        scales_sorted = sorted(base_units.keys())
-
         parts = []
         remainder = number
-        scale_index = len(scales_sorted) - 1
+        scales_sorted = sorted(self.base_units.keys())
 
-        while remainder > 0 and scale_index >= 0:
-            scale = scales_sorted[scale_index]
-            group = remainder // scale
-            remainder = remainder % scale
-
-            if group > 0:
-                if scale == 100:
-                    parts.append(self._convert_hundreds(group * 100))
-                elif scale == 1:
-                    parts.append(self._convert_hundreds(group))
+        for scale in reversed(scales_sorted):
+            if remainder >= scale:
+                group = remainder // scale
+                remainder %= scale
+                if scale >= 1000:
+                    parts.append(f"{self.number_to_words(group)} {self.base_units[scale]}")
                 else:
-                    parts.append(f"{self._convert_hundreds(group)} {base_units[scale]}")
-
-            scale_index -= 1
+                    parts.append(self._convert_hundreds(group * scale))
 
         if remainder > 0:
             parts.append(self._convert_hundreds(remainder))
 
         return " ".join(parts).strip()
 
+    def _convert_hundreds(self, number: int) -> str:
+        """Convert numbers < 1000 to words."""
+        if number >= 1000:
+            raise ValueError(f"_convert_hundreds expects number < 1000, got {number}")
+
+        if number in self.num2word:
+            return self.num2word[number]
+
+        parts = []
+        hundreds = number // 100
+        remainder = number % 100
+
+        if hundreds > 0:
+            parts.append(f"{self.num2word[hundreds]} {self.num2word[100]}")
+
+        if remainder > 0:
+            if remainder in self.num2word:
+                parts.append(self.num2word[remainder])
+            else:
+                tens = remainder - remainder % 10
+                units = remainder % 10
+                if tens > 0:
+                    parts.append(self.num2word.get(tens, str(tens)))
+                if units > 0:
+                    parts.append(self.num2word.get(units, str(units)))
+
+        return " ".join(parts)
+
     def words_to_number(self, words: str):
-        """Convert words back to number with O(n) complexity."""
+        """Convert words back to integer with optional formatting."""
         words = " ".join(words.strip().replace("-", " ").lower().split())
         if words.startswith("negative"):
             return f"-{self.words_to_number(words[8:].strip())}"
@@ -137,33 +151,6 @@ class PyNum2Words:
         number = total + current
         return f"{number:,}" if self.format_number else number
 
-    def _convert_hundreds(self, number: int) -> str:
-        if number >= 1000:
-            raise ValueError(f"_convert_hundreds expects number < 1000, got {number}")
-
-        if number in self.num2word:
-            return self.num2word[number]
-
-        parts = []
-        hundreds = number // 100
-        remainder = number % 100
-
-        if hundreds > 0:
-            parts.append(f"{self.num2word[hundreds]} {self.num2word[100]}")
-
-        if remainder > 0:
-            if remainder in self.num2word:
-                parts.append(self.num2word[remainder])
-            else:
-                tens = remainder - remainder % 10
-                units = remainder % 10
-                if tens > 0:
-                    parts.append(self.num2word.get(tens, str(tens)))
-                if units > 0:
-                    parts.append(self.num2word.get(units, str(units)))
-
-        return " ".join(parts)
-
-    def get_fuzzy_match(self, word: str, cutoff: float = 0.7) -> str:
+    def get_fuzzy_match(self, word: str, cutoff: float = 0.7):
         matches = difflib.get_close_matches(word, self.word2num.keys(), n=1, cutoff=cutoff)
         return matches[0] if matches else None
